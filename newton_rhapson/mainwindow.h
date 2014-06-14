@@ -5,7 +5,7 @@
 #include <cstdio>
 #include <string>
 #include "equation.h"
-#include "equationwindow.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -24,10 +24,15 @@ private slots:
     void on_radioButton_eq1_clicked();
     void on_radioButton_eq2_clicked();
 
+    void on_radioButton_interval_clicked();
+
+    void on_radioButton_normal_clicked();
+
 private:
     Ui::MainWindow *ui;
     Equation * eq;
     bool equationPrepared;
+    int check();
 };
 
 #endif // MAINWINDOW_H

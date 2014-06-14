@@ -15,12 +15,10 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     equation.cpp \
-    equationwindow.cpp \
     IntervalArithmetic.cpp
 
 HEADERS  += mainwindow.h \
     equation.h \
-    equationwindow.h \
     IntervalArithmetic.h
 
 FORMS    += mainwindow.ui

@@ -15,17 +15,19 @@ class Equation
 public:
     Equation(int id);
     ~Equation();
-    Equation(QString _powers);
-    long double newtonRaphson(long double x,
-                             long double eps,
-                             long double fatx,
-                             int mit,
-                             int it,
-                             int st);
+
+    long double newtonRaphson();
 
     long double f  (long double x);
     long double df (long double x);
     long double d2f(long double x);
+
+    long double x;
+    long double eps;
+    long double fatx;
+    int mit;
+    int it;
+    int st;
 
     int id;
 };
