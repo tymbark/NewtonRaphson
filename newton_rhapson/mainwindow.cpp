@@ -1,16 +1,17 @@
-#include "mainwindow.h"
+    #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    eq = new Equation(0);
+
     ui->setupUi(this);
-    ui->radioButton_eq1->setChecked(true);
+    ui->radioButton_eq0->setChecked(true);
     ui->radioButton_normal->setChecked(true);
     on_radioButton_normal_clicked();
-    on_radioButton_eq1_clicked();
-    eq = new Equation(1);
+    on_radioButton_eq0_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -24,41 +25,45 @@ void MainWindow::on_button_solve_clicked(){
 
     if(check() == 0) return;
 
-    if(ui->radioButton_eq1->isChecked()) eq->id = 1;
-    if(ui->radioButton_eq2->isChecked()) eq->id = 2;
-    if(ui->radioButton_eq3->isChecked()) eq->id = 3;
+    //if(ui->radioButton_eq1->isChecked()) eq->id = 1;
+    //if(ui->radioButton_eq2->isChecked()) eq->id = 2;
+    //if(ui->radioButton_eq3->isChecked()) eq->id = 3;
     //if(ui->radioButton_interval->isChecked()) //TODO
     //if(ui->radioButton_normal->isChecked()) // TODO
 
-    string x = (ui->textEdit_x->toPlainText()).toStdString();
-    string eps = (ui->textEdit_eps->toPlainText()).toStdString();
-    string mit = (ui->textEdit_mit->toPlainText()).toStdString();
-
-    istringstream x_in(x);
-    x_in >> eq->x;
-
-    istringstream eps_in(eps);
-    eps_in >> eq->eps;
-
-    istringstream mit_in(mit);
-    mit_in >> eq->mit;
+    eq->x = qstrToLD(ui->textEdit_x->toPlainText());
+    eq->eps = qstrToLD(ui->textEdit_eps->toPlainText());
+    eq->mit = qstrToLD(ui->textEdit_mit->toPlainText());
 
     eq->newtonRaphson();
 
+    ui->textEdit_result->setText(LDtoQstr(eq->result));
+    ui->textEdit_fatx->setText(LDtoQstr(eq->fatx));
+    ui->textEdit_it->setText(LDtoQstr(eq->it));
 }
 
 
 void MainWindow::on_radioButton_eq1_clicked()
 {
+    eq->id = 1;
     QPixmap pix("eq1.png");
     ui->label_image->setPixmap(pix);
 }
 
 void MainWindow::on_radioButton_eq2_clicked()
 {
+    eq->id = 2;
     QPixmap pix("eq2.png");
     ui->label_image->setPixmap(pix);
 }
+
+void MainWindow::on_radioButton_eq0_clicked()
+{
+    eq->id = 0;
+    QPixmap pix("eq0.png");
+    ui->label_image->setPixmap(pix);
+}
+
 
 int MainWindow::check(){
     int result = 1;
@@ -77,6 +82,24 @@ int MainWindow::check(){
     return result;
 }
 
+long double MainWindow::qstrToLD(QString input){
+    long double result;
+
+    string str = input.toStdString();
+    istringstream longD_stream(str);
+    longD_stream >> result;
+
+    return result;
+}
+
+QString MainWindow::LDtoQstr(long double input){
+    QString result;
+    stringstream string_stream;
+    string_stream << input;
+    result = result.fromStdString(string_stream.str());
+    return result;
+}
+
 void MainWindow::on_radioButton_interval_clicked()
 {
 
@@ -86,3 +109,21 @@ void MainWindow::on_radioButton_normal_clicked()
 {
 
 }
+
+void MainWindow::on_pushButton_fill_clicked()
+{
+    if(eq->id == 0){
+        ui->textEdit_x->setText("-1");
+        ui->textEdit_mit->setText("10");
+        ui->textEdit_eps->setText("0.0000000000000001");
+    }else if(eq->id == 1){
+        ui->textEdit_x->setText("-2.2");
+        ui->textEdit_mit->setText("10");
+        ui->textEdit_eps->setText("0.0000000000000001");
+    } else if(eq->id == 2){
+        ui->textEdit_x->setText("0.6");
+        ui->textEdit_mit->setText("20");
+        ui->textEdit_eps->setText("0.0000000000000001");
+    }
+}
+

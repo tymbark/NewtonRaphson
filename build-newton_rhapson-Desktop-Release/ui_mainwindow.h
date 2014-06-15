@@ -38,9 +38,9 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
-    QTextEdit *textEdit_newton;
+    QTextEdit *textEdit_result;
     QTextEdit *textEdit_it;
-    QTextEdit *textEdit_st;
+    QTextEdit *textEdit_fatx;
     QLabel *label_4;
     QLabel *label_5;
     QLabel *label_6;
@@ -49,13 +49,14 @@ public:
     QGroupBox *groupBox;
     QRadioButton *radioButton_eq1;
     QRadioButton *radioButton_eq2;
-    QRadioButton *radioButton_eq3;
+    QRadioButton *radioButton_eq0;
+    QPushButton *pushButton_fill;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(475, 285);
+        MainWindow->resize(480, 285);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label_title = new QLabel(centralWidget);
@@ -63,7 +64,7 @@ public:
         label_title->setGeometry(QRect(10, 0, 271, 31));
         button_solve = new QPushButton(centralWidget);
         button_solve->setObjectName(QStringLiteral("button_solve"));
-        button_solve->setGeometry(QRect(20, 250, 431, 27));
+        button_solve->setGeometry(QRect(300, 250, 151, 27));
         radioButton_normal = new QRadioButton(centralWidget);
         radioButton_normal->setObjectName(QStringLiteral("radioButton_normal"));
         radioButton_normal->setGeometry(QRect(20, 40, 92, 21));
@@ -88,21 +89,21 @@ public:
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(10, 170, 21, 20));
-        textEdit_newton = new QTextEdit(centralWidget);
-        textEdit_newton->setObjectName(QStringLiteral("textEdit_newton"));
-        textEdit_newton->setGeometry(QRect(300, 130, 151, 31));
+        textEdit_result = new QTextEdit(centralWidget);
+        textEdit_result->setObjectName(QStringLiteral("textEdit_result"));
+        textEdit_result->setGeometry(QRect(300, 130, 151, 31));
         textEdit_it = new QTextEdit(centralWidget);
         textEdit_it->setObjectName(QStringLiteral("textEdit_it"));
-        textEdit_it->setGeometry(QRect(300, 170, 151, 31));
-        textEdit_st = new QTextEdit(centralWidget);
-        textEdit_st->setObjectName(QStringLiteral("textEdit_st"));
-        textEdit_st->setGeometry(QRect(300, 210, 151, 31));
+        textEdit_it->setGeometry(QRect(300, 210, 151, 31));
+        textEdit_fatx = new QTextEdit(centralWidget);
+        textEdit_fatx->setObjectName(QStringLiteral("textEdit_fatx"));
+        textEdit_fatx->setGeometry(QRect(300, 170, 151, 31));
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(230, 130, 71, 16));
+        label_4->setGeometry(QRect(210, 130, 91, 20));
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(230, 170, 71, 16));
+        label_5->setGeometry(QRect(210, 170, 91, 20));
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(230, 210, 71, 16));
@@ -117,17 +118,16 @@ public:
         groupBox->setGeometry(QRect(110, 40, 120, 80));
         radioButton_eq1 = new QRadioButton(groupBox);
         radioButton_eq1->setObjectName(QStringLiteral("radioButton_eq1"));
-        radioButton_eq1->setGeometry(QRect(0, 0, 92, 21));
+        radioButton_eq1->setGeometry(QRect(0, 20, 92, 21));
         radioButton_eq2 = new QRadioButton(groupBox);
         radioButton_eq2->setObjectName(QStringLiteral("radioButton_eq2"));
-        radioButton_eq2->setGeometry(QRect(0, 20, 92, 21));
-        radioButton_eq3 = new QRadioButton(groupBox);
-        radioButton_eq3->setObjectName(QStringLiteral("radioButton_eq3"));
-        radioButton_eq3->setGeometry(QRect(0, 40, 92, 21));
-        radioButton_eq1->raise();
-        radioButton_eq1->raise();
-        radioButton_eq2->raise();
-        radioButton_eq3->raise();
+        radioButton_eq2->setGeometry(QRect(0, 40, 92, 21));
+        radioButton_eq0 = new QRadioButton(groupBox);
+        radioButton_eq0->setObjectName(QStringLiteral("radioButton_eq0"));
+        radioButton_eq0->setGeometry(QRect(0, 0, 92, 21));
+        pushButton_fill = new QPushButton(centralWidget);
+        pushButton_fill->setObjectName(QStringLiteral("pushButton_fill"));
+        pushButton_fill->setGeometry(QRect(40, 250, 151, 27));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -145,15 +145,16 @@ public:
         label->setText(QApplication::translate("MainWindow", "x:", 0));
         label_2->setText(QApplication::translate("MainWindow", "eps:", 0));
         label_3->setText(QApplication::translate("MainWindow", "mit:", 0));
-        label_4->setText(QApplication::translate("MainWindow", "aprox root:", 0));
-        label_5->setText(QApplication::translate("MainWindow", "function val:", 0));
+        label_4->setText(QApplication::translate("MainWindow", "aprox root value:", 0));
+        label_5->setText(QApplication::translate("MainWindow", "f(x) value at root:", 0));
         label_6->setText(QApplication::translate("MainWindow", "no iterations:", 0));
         label_image->setText(QApplication::translate("MainWindow", "EQUATION", 0));
         label_check->setText(QString());
         groupBox->setTitle(QString());
-        radioButton_eq1->setText(QApplication::translate("MainWindow", "equation 1", 0));
-        radioButton_eq2->setText(QApplication::translate("MainWindow", "equation 2", 0));
-        radioButton_eq3->setText(QApplication::translate("MainWindow", "equation 3", 0));
+        radioButton_eq1->setText(QApplication::translate("MainWindow", "equation 2", 0));
+        radioButton_eq2->setText(QApplication::translate("MainWindow", "equation 3", 0));
+        radioButton_eq0->setText(QApplication::translate("MainWindow", "equation 1", 0));
+        pushButton_fill->setText(QApplication::translate("MainWindow", "Fill", 0));
     } // retranslateUi
 
 };

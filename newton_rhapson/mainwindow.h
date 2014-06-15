@@ -23,16 +23,19 @@ private slots:
     void on_button_solve_clicked();
     void on_radioButton_eq1_clicked();
     void on_radioButton_eq2_clicked();
-
     void on_radioButton_interval_clicked();
-
     void on_radioButton_normal_clicked();
+    void on_pushButton_fill_clicked();
+
+    void on_radioButton_eq0_clicked();
 
 private:
     Ui::MainWindow *ui;
     Equation * eq;
-    bool equationPrepared;
     int check();
+    long double qstrToLD(QString _input);
+    QString LDtoQstr(long double input);
+
 };
 
 #endif // MAINWINDOW_H

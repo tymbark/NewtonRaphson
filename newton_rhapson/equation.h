@@ -16,15 +16,17 @@ public:
     Equation(int id);
     ~Equation();
 
-    long double newtonRaphson();
+    void newtonRaphson();
 
-    long double f  (long double x);
-    long double df (long double x);
-    long double d2f(long double x);
+    long double f  (long double _x);
+    long double df (long double _x);
+    long double d2f(long double _x);
 
+    long double result;
     long double x;
     long double eps;
     long double fatx;
+
     int mit;
     int it;
     int st;
