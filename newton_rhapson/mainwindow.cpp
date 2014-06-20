@@ -100,14 +100,18 @@ QString MainWindow::LDtoQstr(long double input){
     return result;
 }
 
-void MainWindow::on_radioButton_interval_clicked()
-{
-
+void MainWindow::on_radioButton_interval_clicked(){
+    ui->textEdit_x_2->setEnabled(true);
+    ui->textEdit_x_2->setText("");
+    QApplication::processEvents();
+    cout << "interval clicked" <<  "\n";
 }
 
-void MainWindow::on_radioButton_normal_clicked()
-{
-
+void MainWindow::on_radioButton_normal_clicked(){
+    ui->textEdit_x_2->setText("UNAVAILABLE");
+    ui->textEdit_x_2->setEnabled(false);
+    QApplication::processEvents();
+    cout << "interval unclicked" <<  "\n";
 }
 
 void MainWindow::on_pushButton_fill_clicked()

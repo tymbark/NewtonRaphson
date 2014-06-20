@@ -1,15 +1,17 @@
-#include "equation.h"
+#include "equation_interval.h"
 
-Equation::Equation(int _id){
+using namespace intervalarth;
+
+Equation_Interval::Equation_Interval(int _id){
     id = _id;
     cout << "new equation\n";
 }
 
-Equation::~Equation(){
+Equation_Interval::~Equation_Interval(){
 }
-
-long double Equation::f(long double _x){
-    long double z;
+/*
+interval Equation_Interval::f(interval _x){
+    interval z;
     if (id == 0){
         z = _x *_x;
         result = z - 2;
@@ -23,8 +25,8 @@ long double Equation::f(long double _x){
     return result;
 }
 
-long double Equation::df(long double _x){
-    long double result;
+interval Equation_Interval::df(interval _x){
+    interval result;
     if (id == 0){
         result = 2 * _x;
     } else if (id == 1){
@@ -35,8 +37,8 @@ long double Equation::df(long double _x){
     return result;
 }
 
-long double Equation::d2f(long double _x){
-    long double result;
+interval Equation_Interval::d2f(interval _x){
+    interval result;
     if (id == 0){
         result = 2;
     } else if (id == 1){
@@ -47,14 +49,14 @@ long double Equation::d2f(long double _x){
     return result;
 }
 
-void Equation::newtonRaphson(){
+void Equation_Interval::newtonRaphson(){
 
     cout << "Newton Raphson LAUNCH! \n";
     cout << " x" <<x<<"\n";
     cout << " mit:"<<mit<<"\n";
     cout << " eps:"<<eps<<"\n";
 
-    long double dfatx,d2fatx,p,v,w,xh,x1,x2;
+    interval dfatx,d2fatx,p,v,w,xh,x1,x2;
     if(mit < 1){
         st = 1;
     }else {
@@ -111,6 +113,5 @@ void Equation::newtonRaphson(){
     cout << " it:"<< it <<"\n";
     cout << " st:"<< st <<"\n";
     cout << " fatx:"<< fatx <<"\n";
-}
-
+}*/
 
