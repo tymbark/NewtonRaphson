@@ -25,21 +25,21 @@ void MainWindow::on_button_solve_clicked(){
 
     if(check() == 0) return;
 
-    //if(ui->radioButton_eq1->isChecked()) eq->id = 1;
-    //if(ui->radioButton_eq2->isChecked()) eq->id = 2;
-    //if(ui->radioButton_eq3->isChecked()) eq->id = 3;
-    //if(ui->radioButton_interval->isChecked()) //TODO
-    //if(ui->radioButton_normal->isChecked()) // TODO
+    if(ui->radioButton_interval->isChecked()){
 
-    eq->x = qstrToLD(ui->textEdit_x->toPlainText());
-    eq->eps = qstrToLD(ui->textEdit_eps->toPlainText());
-    eq->mit = qstrToLD(ui->textEdit_mit->toPlainText());
+    }
+    if(ui->radioButton_normal->isChecked()){
 
-    eq->newtonRaphson();
+        eq->x = qstrToLD(ui->textEdit_x->toPlainText());
+        eq->eps = qstrToLD(ui->textEdit_eps->toPlainText());
+        eq->mit = qstrToLD(ui->textEdit_mit->toPlainText());
 
-    ui->textEdit_result->setText(LDtoQstr(eq->result));
-    ui->textEdit_fatx->setText(LDtoQstr(eq->fatx));
-    ui->textEdit_it->setText(LDtoQstr(eq->it));
+        eq->newtonRaphson();
+
+        ui->textEdit_result->setText(LDtoQstr(eq->result));
+        ui->textEdit_fatx->setText(LDtoQstr(eq->fatx));
+        ui->textEdit_it->setText(LDtoQstr(eq->it));
+    }
 }
 
 

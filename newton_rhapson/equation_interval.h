@@ -6,7 +6,8 @@
 #include <fenv.h>
 #include <limits.h>
 #include <cmath>
-#include <IntervalArithmetic.h>
+//#include <IntervalArithmetic.h>
+#include "IntervalArithmetic.h"
 
 using namespace intervalarth;
 

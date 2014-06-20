@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <string>
 #include "equation.h"
+#include "equation_interval.h"
 
 
 namespace Ui {
@@ -32,6 +33,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Equation * eq;
+    Equation_Interval * eq_i;
     int check();
     long double qstrToLD(QString _input);
     QString LDtoQstr(long double input);
