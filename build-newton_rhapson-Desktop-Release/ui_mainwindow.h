@@ -53,12 +53,16 @@ public:
     QGroupBox *groupBox_2;
     QRadioButton *radioButton_normal;
     QRadioButton *radioButton_interval;
+    QTextEdit *textEdit_result_2;
+    QTextEdit *textEdit_fatx_2;
+    QLabel *label_check_2;
+    QTextEdit *textEdit_eps_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(533, 285);
+        MainWindow->resize(633, 289);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label_title = new QLabel(centralWidget);
@@ -66,16 +70,16 @@ public:
         label_title->setGeometry(QRect(10, 0, 271, 31));
         button_solve = new QPushButton(centralWidget);
         button_solve->setObjectName(QStringLiteral("button_solve"));
-        button_solve->setGeometry(QRect(370, 250, 151, 27));
+        button_solve->setGeometry(QRect(390, 250, 231, 27));
         textEdit_x = new QTextEdit(centralWidget);
         textEdit_x->setObjectName(QStringLiteral("textEdit_x"));
-        textEdit_x->setGeometry(QRect(40, 130, 101, 31));
+        textEdit_x->setGeometry(QRect(40, 130, 111, 31));
         textEdit_mit = new QTextEdit(centralWidget);
         textEdit_mit->setObjectName(QStringLiteral("textEdit_mit"));
-        textEdit_mit->setGeometry(QRect(40, 170, 151, 31));
+        textEdit_mit->setGeometry(QRect(40, 170, 231, 31));
         textEdit_eps = new QTextEdit(centralWidget);
         textEdit_eps->setObjectName(QStringLiteral("textEdit_eps"));
-        textEdit_eps->setGeometry(QRect(40, 210, 151, 31));
+        textEdit_eps->setGeometry(QRect(40, 210, 111, 31));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 130, 21, 20));
@@ -87,31 +91,34 @@ public:
         label_3->setGeometry(QRect(10, 170, 21, 20));
         textEdit_result = new QTextEdit(centralWidget);
         textEdit_result->setObjectName(QStringLiteral("textEdit_result"));
-        textEdit_result->setGeometry(QRect(370, 130, 151, 31));
+        textEdit_result->setGeometry(QRect(390, 130, 111, 31));
         textEdit_it = new QTextEdit(centralWidget);
         textEdit_it->setObjectName(QStringLiteral("textEdit_it"));
-        textEdit_it->setGeometry(QRect(370, 210, 151, 31));
+        textEdit_it->setGeometry(QRect(390, 210, 231, 31));
         textEdit_fatx = new QTextEdit(centralWidget);
         textEdit_fatx->setObjectName(QStringLiteral("textEdit_fatx"));
-        textEdit_fatx->setGeometry(QRect(370, 170, 151, 31));
+        textEdit_fatx->setGeometry(QRect(390, 170, 111, 31));
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(280, 130, 91, 20));
+        label_4->setGeometry(QRect(300, 130, 91, 20));
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(280, 170, 91, 20));
+        label_5->setGeometry(QRect(300, 170, 91, 20));
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(300, 210, 71, 16));
+        label_6->setGeometry(QRect(320, 210, 71, 16));
         label_image = new QLabel(centralWidget);
         label_image->setObjectName(QStringLiteral("label_image"));
-        label_image->setGeometry(QRect(230, 40, 231, 41));
+        label_image->setGeometry(QRect(300, 40, 231, 41));
         label_check = new QLabel(centralWidget);
         label_check->setObjectName(QStringLiteral("label_check"));
-        label_check->setGeometry(QRect(70, 90, 411, 21));
+        label_check->setGeometry(QRect(40, 110, 111, 21));
+        QFont font;
+        font.setPointSize(12);
+        label_check->setFont(font);
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(110, 40, 120, 80));
+        groupBox->setGeometry(QRect(150, 40, 120, 80));
         radioButton_eq1 = new QRadioButton(groupBox);
         radioButton_eq1->setObjectName(QStringLiteral("radioButton_eq1"));
         radioButton_eq1->setGeometry(QRect(0, 20, 92, 21));
@@ -121,15 +128,12 @@ public:
         radioButton_eq0 = new QRadioButton(groupBox);
         radioButton_eq0->setObjectName(QStringLiteral("radioButton_eq0"));
         radioButton_eq0->setGeometry(QRect(0, 0, 92, 21));
-        radioButton_eq1->raise();
-        radioButton_eq2->raise();
-        radioButton_eq0->raise();
         pushButton_fill = new QPushButton(centralWidget);
         pushButton_fill->setObjectName(QStringLiteral("pushButton_fill"));
-        pushButton_fill->setGeometry(QRect(40, 250, 151, 27));
+        pushButton_fill->setGeometry(QRect(40, 250, 231, 27));
         textEdit_x_2 = new QTextEdit(centralWidget);
         textEdit_x_2->setObjectName(QStringLiteral("textEdit_x_2"));
-        textEdit_x_2->setGeometry(QRect(150, 130, 101, 31));
+        textEdit_x_2->setGeometry(QRect(160, 130, 111, 31));
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setGeometry(QRect(10, 30, 120, 80));
@@ -139,10 +143,19 @@ public:
         radioButton_interval = new QRadioButton(groupBox_2);
         radioButton_interval->setObjectName(QStringLiteral("radioButton_interval"));
         radioButton_interval->setGeometry(QRect(0, 30, 92, 21));
-        radioButton_normal->raise();
-        radioButton_interval->raise();
-        radioButton_normal->raise();
-        radioButton_interval->raise();
+        textEdit_result_2 = new QTextEdit(centralWidget);
+        textEdit_result_2->setObjectName(QStringLiteral("textEdit_result_2"));
+        textEdit_result_2->setGeometry(QRect(510, 130, 111, 31));
+        textEdit_fatx_2 = new QTextEdit(centralWidget);
+        textEdit_fatx_2->setObjectName(QStringLiteral("textEdit_fatx_2"));
+        textEdit_fatx_2->setGeometry(QRect(510, 170, 111, 31));
+        label_check_2 = new QLabel(centralWidget);
+        label_check_2->setObjectName(QStringLiteral("label_check_2"));
+        label_check_2->setGeometry(QRect(390, 110, 111, 21));
+        label_check_2->setFont(font);
+        textEdit_eps_2 = new QTextEdit(centralWidget);
+        textEdit_eps_2->setObjectName(QStringLiteral("textEdit_eps_2"));
+        textEdit_eps_2->setGeometry(QRect(160, 210, 111, 31));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -162,7 +175,7 @@ public:
         label_5->setText(QApplication::translate("MainWindow", "f(x) value at root:", 0));
         label_6->setText(QApplication::translate("MainWindow", "no iterations:", 0));
         label_image->setText(QApplication::translate("MainWindow", "EQUATION", 0));
-        label_check->setText(QString());
+        label_check->setText(QApplication::translate("MainWindow", "INPUT", 0));
         groupBox->setTitle(QString());
         radioButton_eq1->setText(QApplication::translate("MainWindow", "equation 2", 0));
         radioButton_eq2->setText(QApplication::translate("MainWindow", "equation 3", 0));
@@ -171,6 +184,7 @@ public:
         groupBox_2->setTitle(QString());
         radioButton_normal->setText(QApplication::translate("MainWindow", "normal", 0));
         radioButton_interval->setText(QApplication::translate("MainWindow", "interval", 0));
+        label_check_2->setText(QApplication::translate("MainWindow", "OUTPUT", 0));
     } // retranslateUi
 
 };
